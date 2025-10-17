@@ -27,6 +27,7 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  
   <!-- =======================================================
   * Template Name: EasyFolio
   * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
@@ -858,6 +859,12 @@
         if (response.ok) {
           sentMessage.style.display = "block";
           form.reset();
+    
+          // Cacher le message de succès après 5 secondes
+          setTimeout(() => {
+            sentMessage.style.display = "none";
+          }, 5000);
+    
         } else {
           response.json().then(data => {
             if (data.errors) {
@@ -865,11 +872,21 @@
             } else {
               errorMessage.innerText = "Oops! There was a problem submitting your form.";
             }
+    
+            // Cacher le message d'erreur après 5 secondes
+            setTimeout(() => {
+              errorMessage.innerText = "";
+            }, 5000);
           });
         }
       }).catch(() => {
         loading.style.display = "none";
         errorMessage.innerText = "Oops! There was a problem submitting your form.";
+    
+        // Cacher le message d'erreur après 5 secondes
+        setTimeout(() => {
+          errorMessage.innerText = "";
+        }, 5000);
       });
     });
     </script>
