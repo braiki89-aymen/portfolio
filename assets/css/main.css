@@ -2052,3 +2052,40 @@ body[data-theme="dark"] .btn-submit {
 body[data-theme="dark"] .btn-submit:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
+
+
+/* =====================
+   Language Flags
+   ===================== */
+.language-flags {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: 1rem;
+}
+
+.language-flags img {
+  width: 24px;
+  height: 16px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.language-flags img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  border-color: var(--accent-color);
+}
+
+.language-flags img.active {
+  opacity: 1;
+  border-color: var(--accent-color);
+}
+
+/* Mode sombre */
+body[data-theme="dark"] .language-flags img {
+  border-color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
