@@ -56,9 +56,12 @@
           <li><a href="#about">About</a></li>
           <li><a href="#resume">Resume</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Services</a></li>
-          
+          <li><a href="#services">Services</a></li>          
           <li><a href="#contact">Contact</a></li>
+		  <button id="theme-toggle" class="btn btn-outline-dark ms-3">
+			<i class="bi bi-moon"></i> 
+		  </button>
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -893,7 +896,32 @@
     });
     </script>
     
-	
+	<script>
+  const toggle = document.getElementById('theme-toggle');
+  const icon = toggle.querySelector('i');
+  const body = document.body;
+
+  // Charger la préférence de l'utilisateur
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    body.setAttribute('data-theme', 'dark');
+    icon.classList.replace('bi-moon', 'bi-sun');
+  }
+
+  toggle.addEventListener('click', () => {
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      body.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      icon.classList.replace('bi-sun', 'bi-moon');
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      icon.classList.replace('bi-moon', 'bi-sun');
+    }
+  });
+</script>
+
 
 </body>
 

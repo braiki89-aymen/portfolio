@@ -57,6 +57,37 @@
   scroll-behavior: smooth;
 }
 
+/* =====================
+   MODE SOMBRE
+   ===================== */
+body[data-theme="dark"] {
+  --background-color: #0d1117;
+  --surface-color: #161b22;
+  --default-color: #e6edf3;
+  --heading-color: #ffffff;
+  --accent-color: #e87532; /* tu peux garder ton orange */
+  --contrast-color: #ffffff;
+  --nav-color: #e6edf3;
+  --nav-hover-color: #e87532;
+  --nav-mobile-background-color: #161b22;
+  --nav-dropdown-background-color: #161b22;
+  --nav-dropdown-color: #e6edf3;
+  --nav-dropdown-hover-color: #e87532;
+}
+
+
+
+
+/* Pour éviter que .light-background reste blanche en mode sombre */
+body[data-theme="dark"] .light-background {
+  --background-color: #0d1117; /* même couleur que le reste du dark */
+  --surface-color: #161b22;
+  --default-color: #e6edf3;
+  --heading-color: #ffffff;
+  --contrast-color: #ffffff;
+}
+
+
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
@@ -1957,4 +1988,67 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+
+
+/* =====================
+   Bouton de bascule du thème
+   ===================== */
+#theme-toggle {
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 60%);
+  color: var(--default-color);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* En mode sombre : renforcer la bordure pour qu'elle reste visible */
+body[data-theme="dark"] #theme-toggle {
+  border-color: color-mix(in srgb, var(--default-color), transparent 40%);
+  color: var(--default-color);
+}
+
+body[data-theme="dark"] #theme-toggle:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+
+
+/* ==========================
+   Mode sombre - Formulaires
+   ========================== */
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea,
+body[data-theme="dark"] select {
+  background-color: #161b22;           /* Fond sombre */
+  color: #e6edf3;                      /* Texte clair */
+  border: 1px solid #30363d;           /* Bordure douce */
+}
+
+body[data-theme="dark"] input::placeholder,
+body[data-theme="dark"] textarea::placeholder {
+  color: #8b949e;                      /* Placeholder gris clair */
+}
+
+body[data-theme="dark"] input:focus,
+body[data-theme="dark"] textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);   /* Bordure orange lors du focus */
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent-color), transparent 80%);
+}
+
+body[data-theme="dark"] .btn-submit {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+}
+
+body[data-theme="dark"] .btn-submit:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
